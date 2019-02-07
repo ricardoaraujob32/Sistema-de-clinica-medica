@@ -12,7 +12,7 @@ import java.util.List;
 
 import model.AlocacaoMedicos;
 
-public class AlocacaoMedicosDAOImpl extends AbstractDAO<AlocacaoMedicos> {
+public class AlocacaoMedicosDAO extends AbstractDAO<AlocacaoMedicos> {
 	
 	@Override
 	public void alterar(AlocacaoMedicos aloc) {

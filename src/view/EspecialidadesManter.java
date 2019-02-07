@@ -17,7 +17,7 @@ public class EspecialidadesManter extends AbstractBoundaryManter<Especialidade> 
 		setTitle("Manter especialidades");
 		setBounds(100, 100, 521, 300);
 				
-		JLabel lblCodigo = new JLabel("Código:");
+		JLabel lblCodigo = new JLabel("Cï¿½digo:");
 		lblCodigo.setBounds(10, 11, 46, 14);
 		contentPane.add(lblCodigo);
 		
@@ -25,7 +25,7 @@ public class EspecialidadesManter extends AbstractBoundaryManter<Especialidade> 
 		txtCodigo.setBounds(66, 8, 86, 20);
 		contentPane.add(txtCodigo);
 		
-		JLabel lblDescricao = new JLabel("Descrição:");
+		JLabel lblDescricao = new JLabel("Descriï¿½ï¿½o:");
 		lblDescricao.setBounds(10, 36, 58, 14);
 		contentPane.add(lblDescricao);
 		
@@ -68,4 +68,9 @@ public class EspecialidadesManter extends AbstractBoundaryManter<Especialidade> 
 			txtAreaDescricao.setText("");
 		}
 	}
+        
+        public static void main(String[] args) {
+            new EspecialidadesManter().setVisible(true);
+        }
+        
 }

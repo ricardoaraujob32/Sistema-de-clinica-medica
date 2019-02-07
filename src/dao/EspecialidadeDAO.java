@@ -8,7 +8,7 @@ import java.util.List;
 
 import model.Especialidade;
 
-public class EspecialidadeDAOImpl extends AbstractDAO<Especialidade> {
+public class EspecialidadeDAO extends AbstractDAO<Especialidade> {
 		
 	@Override
 	public void alterar(Especialidade especialidade) {

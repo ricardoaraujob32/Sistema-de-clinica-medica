@@ -1,13 +1,13 @@
 package controller;
 
-import dao.AlocacaoMedicosDAOImpl;
+import dao.AlocacaoMedicosDAO;
 import model.AlocacaoMedicos;
 
 public class AlocacaoMedicosController extends AbstractControlador<AlocacaoMedicos> {
 	
 	
 	public AlocacaoMedicosController() {
-		dao = new AlocacaoMedicosDAOImpl();
+		dao = new AlocacaoMedicosDAO();
 	}
 
 	@Override

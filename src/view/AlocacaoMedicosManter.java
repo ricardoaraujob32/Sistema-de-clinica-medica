@@ -42,14 +42,14 @@ public class AlocacaoMedicosManter extends JFrame {
 			public void windowOpened(WindowEvent arg0) {
 			}
 		});
-		setTitle("Manter alocação de médicos");
+		setTitle("Manter alocaï¿½ï¿½o de mï¿½dicos");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 618, 192);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnOpcoes = new JMenu("Opções");
+		JMenu mnOpcoes = new JMenu("Opï¿½ï¿½es");
 		menuBar.add(mnOpcoes);
 		
 		JMenuItem mntmAlterar = new JMenuItem("Alterar");
@@ -86,7 +86,7 @@ public class AlocacaoMedicosManter extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblClnica = new JLabel("Clínica:");
+		JLabel lblClnica = new JLabel("Clï¿½nica:");
 		lblClnica.setBounds(10, 11, 46, 14);
 		contentPane.add(lblClnica);
 		
@@ -102,7 +102,7 @@ public class AlocacaoMedicosManter extends JFrame {
 		cbxEspecialidade.setBounds(286, 8, 120, 20);
 		contentPane.add(cbxEspecialidade);
 		
-		JLabel lblMedico = new JLabel("Médico:");
+		JLabel lblMedico = new JLabel("Mï¿½dico:");
 		lblMedico.setBounds(416, 11, 46, 14);
 		contentPane.add(lblMedico);
 		
@@ -110,7 +110,7 @@ public class AlocacaoMedicosManter extends JFrame {
 		cbxMedico.setBounds(472, 8, 120, 20);
 		contentPane.add(cbxMedico);
 		
-		JLabel lblHorarioInicio = new JLabel("Horário (Início):");
+		JLabel lblHorarioInicio = new JLabel("Horï¿½rio (Inï¿½cio):");
 		lblHorarioInicio.setBounds(10, 51, 83, 14);
 		contentPane.add(lblHorarioInicio);
 		
@@ -118,7 +118,7 @@ public class AlocacaoMedicosManter extends JFrame {
 		spinHorarioInicio.setBounds(98, 48, 93, 20);
 		contentPane.add(spinHorarioInicio);
 		
-		JLabel lblHorarioFim = new JLabel("Horário (Fim):");
+		JLabel lblHorarioFim = new JLabel("Horï¿½rio (Fim):");
 		lblHorarioFim.setBounds(255, 51, 74, 14);
 		contentPane.add(lblHorarioFim);
 		
@@ -126,7 +126,7 @@ public class AlocacaoMedicosManter extends JFrame {
 		spinHorarioFim.setBounds(339, 48, 90, 20);
 		contentPane.add(spinHorarioFim);
 		
-		btnVerEscalaMedico = new JButton("Ver escala do médico");
+		btnVerEscalaMedico = new JButton("Ver escala do mï¿½dico");
 		btnVerEscalaMedico.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}

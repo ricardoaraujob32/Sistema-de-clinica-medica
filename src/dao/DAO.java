@@ -3,11 +3,8 @@ package dao;
 import java.util.List;
 
 public interface DAO<E> {
-	void alterar(E entidade);
-	void cadastrar(E entidade);
-	void deletar(E entidade);
-	List<E> pesquisar();
-	void fecharConexao();
-	void entidadeToDAO(E entidade);
-	E DAOToEntidade();
+	void alterar(E entidade) throws GenericDAOException;
+	void cadastrar(E entidade) throws GenericDAOException;
+	void deletar(E entidade) throws GenericDAOException;
+	List<E> pesquisar() throws GenericDAOException;
 }

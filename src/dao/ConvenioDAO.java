@@ -10,7 +10,7 @@ import java.util.List;
 
 import model.Convenio;
 
-public class ConvenioDAOImpl extends AbstractDAO<Convenio> {
+public class ConvenioDAO extends AbstractDAO<Convenio> {
 	
 	@Override
 	public void alterar(Convenio convenio) {

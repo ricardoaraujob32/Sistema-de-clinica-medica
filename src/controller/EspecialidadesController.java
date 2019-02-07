@@ -1,6 +1,6 @@
 package controller;
 
-import dao.EspecialidadeDAOImpl;
+import dao.EspecialidadeDAO;
 import model.Especialidade;
 
 /**
@@ -14,13 +14,13 @@ public class EspecialidadesController extends AbstractControlador<Especialidade>
 	 * 
 	 */
 	public EspecialidadesController() {
-		String nomes[] = {"Código", "Descrição"};
+		String nomes[] = {"Cï¿½digo", "Descriï¿½ï¿½o"};
 		setNomeColunas(nomes);
 		
 		Class<?> tipos[] = {Integer.class, String.class};
 		setTipoColunas(tipos);
 		
-		dao = new EspecialidadeDAOImpl();
+		dao = new EspecialidadeDAO();
 	}
 	
 	@Override

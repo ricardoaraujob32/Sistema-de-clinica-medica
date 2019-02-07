@@ -9,7 +9,7 @@ import java.util.List;
 
 import model.Paciente;
 
-public class PacienteDAOImpl extends AbstractDAO<Paciente> {
+public class PacienteDAO extends AbstractDAO<Paciente> {
 	private int codigoPaciente;
 	private int codigoEmpresa;
 	private String nome;
@@ -27,7 +27,7 @@ public class PacienteDAOImpl extends AbstractDAO<Paciente> {
 	private String celular;
 	private String email;
 	
-	public PacienteDAOImpl() {
+	public PacienteDAO() {
 		//listaRegistros = new LinkedList< PacienteRegistro >();
 	}
 	
@@ -93,7 +93,7 @@ public class PacienteDAOImpl extends AbstractDAO<Paciente> {
 	}
 
 	/**
-	 * Mapeia uma entidade da aplicação para uma entidade do banco de dados
+	 * Mapeia uma entidade da aplicaï¿½ï¿½o para uma entidade do banco de dados
 	 */
 	@Override
 	public void entidadeToDAO(Paciente paciente) {

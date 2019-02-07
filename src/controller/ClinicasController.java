@@ -1,18 +1,18 @@
 package controller;
 
-import dao.ClinicaDAOImpl;
+import dao.ClinicaDAO;
 import model.Clinica;
 
 public class ClinicasController extends AbstractControlador<Clinica> {	
 	
 	public ClinicasController() {
-		String nomes[] = {"Código", "Endereço"};
+		String nomes[] = {"Cï¿½digo", "Endereï¿½o"};
 		setNomeColunas(nomes);
 		
 		Class<?> tipos[] = {Integer.class, String.class};
 		setTipoColunas(tipos);
 		
-		dao = new ClinicaDAOImpl();
+		dao = new ClinicaDAO();
 	}
 			
 	@Override

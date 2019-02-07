@@ -2,13 +2,13 @@ package controller;
 
 import java.time.LocalDate;
 
-import dao.MedicoDAOImpl;
+import dao.MedicoDAO;
 import model.Medico;
 
 public class MedicosController extends AbstractControlador<Medico> {	
 	
 	public MedicosController() {
-		String nomes[] = {"Código", "Nome", "Data de nascimento", "RG", "CPF", "Sexo", "Endereço", 
+		String nomes[] = {"Cï¿½digo", "Nome", "Data de nascimento", "RG", "CPF", "Sexo", "Endereï¿½o", 
 				"Telefone", "Celular", "E-Mail", "CRM"};
 		setNomeColunas(nomes);
 		
@@ -16,7 +16,7 @@ public class MedicosController extends AbstractControlador<Medico> {
 				Character.class, String.class, String.class, String.class, String.class, String.class};
 		setTipoColunas(tipos);
 		
-		dao = new MedicoDAOImpl();
+		dao = new MedicoDAO();
 	}	
 		
 	@Override

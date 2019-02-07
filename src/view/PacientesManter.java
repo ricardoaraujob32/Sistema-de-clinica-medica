@@ -1,38 +1,22 @@
 package view;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ListIterator;
 
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
-import javax.swing.border.EmptyBorder;
-
-import controller.ControladorMediatorImpl;
 import controller.EstadosComboBoxModel;
 import controller.PacientesController;
 import model.Paciente;
 
 public class PacientesManter extends AbstractBoundaryManter<Paciente> {
-
 	private JTextField txtNome;
 	private JTextField txtCodigo;
 	private JSpinner spinDataNascimento;
@@ -71,7 +55,7 @@ public class PacientesManter extends AbstractBoundaryManter<Paciente> {
 		txtNome.setBounds(57, 20, 338, 20);
 		contentPane.add(txtNome);
 		
-		JLabel lblCodigo = new JLabel("Código:");
+		JLabel lblCodigo = new JLabel("Cï¿½digo:");
 		lblCodigo.setBounds(444, 23, 46, 14);
 		contentPane.add(lblCodigo);
 		
@@ -156,7 +140,7 @@ public class PacientesManter extends AbstractBoundaryManter<Paciente> {
 		txtLogradouro.setBounds(259, 174, 401, 20);
 		contentPane.add(txtLogradouro);
 		
-		JLabel lblNumero = new JLabel("Número:");
+		JLabel lblNumero = new JLabel("Nï¿½mero:");
 		lblNumero.setBounds(10, 220, 46, 14);
 		contentPane.add(lblNumero);
 		

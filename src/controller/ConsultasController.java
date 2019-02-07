@@ -1,6 +1,6 @@
 package controller;
 
-import dao.ConsultaDAOImpl;
+import dao.ConsultaDAO;
 import model.Consulta;
 
 public class ConsultasController extends AbstractControlador<Consulta> {
@@ -8,7 +8,7 @@ public class ConsultasController extends AbstractControlador<Consulta> {
 	public ConsultasController() {
 		// TODO Auto-generated constructor stub
 		
-		dao = new ConsultaDAOImpl();
+		dao = new ConsultaDAO();
 	}
 
 	@Override

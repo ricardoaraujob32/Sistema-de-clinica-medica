@@ -10,7 +10,7 @@ import java.util.List;
 
 import model.Medico;
 
-public class MedicoDAOImpl extends AbstractDAO<Medico> {
+public class MedicoDAO extends AbstractDAO<Medico> {
 	
 	@Override
 	public void alterar(Medico medico) {

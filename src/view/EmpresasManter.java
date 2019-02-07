@@ -2,21 +2,11 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.ListIterator;
 
-import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 
 import controller.ControladorMediatorImpl;
 import model.Empresa;
@@ -41,7 +31,7 @@ public class EmpresasManter extends AbstractBoundaryManter<Empresa> {
 		contentPane.add(txtCodigo);
 		txtCodigo.setColumns(10);
 		
-		JLabel lblCodigo = new JLabel("Código:");
+		JLabel lblCodigo = new JLabel("Cï¿½digo:");
 		lblCodigo.setBounds(26, 75, 46, 14);
 		contentPane.add(lblCodigo);
 		
@@ -72,11 +62,11 @@ public class EmpresasManter extends AbstractBoundaryManter<Empresa> {
 		txtContato.setBounds(93, 280, 86, 20);
 		contentPane.add(txtContato);
 		
-		JLabel lblConvenio = new JLabel("Convênio:");
+		JLabel lblConvenio = new JLabel("Convï¿½nio:");
 		lblConvenio.setBounds(282, 75, 52, 14);
 		contentPane.add(lblConvenio);
 		
-		JLabel lblRazaoSocial = new JLabel("Razão social:");
+		JLabel lblRazaoSocial = new JLabel("Razï¿½o social:");
 		lblRazaoSocial.setBounds(271, 140, 63, 14);
 		contentPane.add(lblRazaoSocial);
 		

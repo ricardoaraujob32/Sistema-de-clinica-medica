@@ -1,10 +1,10 @@
 package controller;
 
-import dao.EmpresaDAOImpl;
+import dao.EmpresaDAO;
 import model.Empresa;
 
 /** 
- * @author Ricardo de Araújo Balduino
+ * @author Ricardo de Araï¿½jo Balduino
  * @version 1.0
  * @since 1.0
  */
@@ -14,15 +14,15 @@ public class EmpresasController extends AbstractControlador<Empresa> {
 	 * Cria um novo objeto com a lista de entidades vazia e o modelo de dados do ComboBox vazio
 	 */
 	public EmpresasController() {
-		String nomes[] = {"Código", "Nome fantasia", "Razão social", "CNPJ",
-				"Convênio", "Telefone", "Contato", "Site"};
+		String nomes[] = {"Cï¿½digo", "Nome fantasia", "Razï¿½o social", "CNPJ",
+				"Convï¿½nio", "Telefone", "Contato", "Site"};
 		setNomeColunas(nomes);
 		
 		Class<?> tipos[] = {Integer.class, String.class, String.class, String.class, 
 				String.class, String.class, String.class, String.class};
 		setTipoColunas(tipos);
 		
-		dao = new EmpresaDAOImpl();
+		dao = new EmpresaDAO();
 		
 	}
 	
