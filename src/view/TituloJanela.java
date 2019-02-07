@@ -13,7 +13,7 @@ import controller.Controlador;
  */
 public interface TituloJanela<E> {
     String getTituloJanela();
-    E gravarNaEntidade();
+    E gravarNaEntidade(boolean usarCodigo);
     void lerDaEntidade(E entidade);
     Controlador<E> getControlador();
     

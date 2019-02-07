@@ -222,11 +222,11 @@ public class FrmManter extends JFrame implements ChangeListener, ActionListener 
         } else if (source == mntmEmpresas){
             
         } else if (source == mntmEspecialidades){
-            painelAtual = new EspecialidadesManterJPanel();
+            painelAtual = new EspecialidadesManter();
         } else if (source == mntmMedicos){
-            painelAtual = new MedicosManterJPanel();
+            painelAtual = new MedicosManter();
         } else if (source == mntmPacientes){
-            painelAtual = new PacientesManterJPanel();            
+            painelAtual = new PacientesManter();            
         }        
         
         repaint();

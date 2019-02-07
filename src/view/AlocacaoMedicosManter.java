@@ -1,163 +1,122 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import controller.ControladorMediatorImpl;
-import model.AlocacaoMedicos;
-import model.Medico;
-
-import javax.swing.JLabel;
-import javax.swing.JComboBox;
-import javax.swing.JSpinner;
-import javax.swing.JButton;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.awt.event.ActionListener;
+import controller.Controlador;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.LocalTime;
+import java.util.Date;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import model.AlocacaoMedicos;
 
-public class AlocacaoMedicosManter extends JFrame {
+/**
+ *
+ * @author ricardobalduino
+ */
+public class AlocacaoMedicosManter extends JPanel implements TituloJanela<AlocacaoMedicos> {
+    private JComboBox cbxClinica;
+    private JComboBox cbxEspecialidade;
+    private JComboBox cbxMedico;
+    private JSpinner spinHorarioInicio;
+    private JSpinner spinHorarioFim;
+    private JButton btnVerEscalaMedico;
+    
+    public AlocacaoMedicosManter() {
+        JLabel lblClnica = new JLabel("Clínica:");
+        lblClnica.setBounds(10, 11, 46, 14);
+        add(lblClnica);
 
-	private JPanel contentPane;
-	private JComboBox cbxClinica;
-	private JComboBox cbxEspecialidade;
-	private JComboBox cbxMedico;
-	private JSpinner spinHorarioInicio;
-	private JSpinner spinHorarioFim;
-	private JButton btnVerEscalaMedico;
+        cbxClinica = new JComboBox<String>();
+        cbxClinica.setBounds(66, 8, 120, 20);
+        add(cbxClinica);
 
-	public AlocacaoMedicosManter() {
-		addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowOpened(WindowEvent arg0) {
-			}
-		});
-		setTitle("Manter aloca��o de m�dicos");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 618, 192);
-		
-		JMenuBar menuBar = new JMenuBar();
-		setJMenuBar(menuBar);
-		
-		JMenu mnOpcoes = new JMenu("Op��es");
-		menuBar.add(mnOpcoes);
-		
-		JMenuItem mntmAlterar = new JMenuItem("Alterar");
-		mntmAlterar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				List<String> lista = criarLista(true);
+        JLabel lblEspecialidade = new JLabel("Especialidade:");
+        lblEspecialidade.setBounds(202, 11, 74, 14);
+        add(lblEspecialidade);
 
-				ControladorMediatorImpl.getInstancia().alterarAlocacaoMedicos(lista);
-			}
-		});
-		mnOpcoes.add(mntmAlterar);
+        cbxEspecialidade = new JComboBox<String>();
+        cbxEspecialidade.setBounds(286, 8, 120, 20);
+        add(cbxEspecialidade);
+
+        JLabel lblMedico = new JLabel("Médico:");
+        lblMedico.setBounds(416, 11, 46, 14);
+        add(lblMedico);
+
+        cbxMedico = new JComboBox<String>();
+        cbxMedico.setBounds(472, 8, 120, 20);
+        add(cbxMedico);
+
+        JLabel lblHorarioInicio = new JLabel("Horário (Início):");
+        lblHorarioInicio.setBounds(10, 51, 83, 14);
+        add(lblHorarioInicio);
+
+        spinHorarioInicio = new JSpinner();
+        spinHorarioInicio.setBounds(98, 48, 93, 20);
+        add(spinHorarioInicio);
+
+        JLabel lblHorarioFim = new JLabel("Horário (Fim):");
+        lblHorarioFim.setBounds(255, 51, 74, 14);
+        add(lblHorarioFim);
+
+        spinHorarioFim = new JSpinner();
+        spinHorarioFim.setBounds(339, 48, 90, 20);
+        add(spinHorarioFim);
+
+        btnVerEscalaMedico = new JButton("Ver escala do médico");
+        btnVerEscalaMedico.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                }
+        });
+        btnVerEscalaMedico.setBounds(454, 98, 138, 23);
+        add(btnVerEscalaMedico);
+    }    
+    
+    @Override
+    public String getTituloJanela() {
+        return "Manter alocação de médicos";
+    }
+
+    @Override
+    public AlocacaoMedicos gravarNaEntidade(boolean usarCodigo) {
+        AlocacaoMedicos a = new AlocacaoMedicos();
 		
-		JMenuItem mntmSalvar = new JMenuItem("Salvar");
-		mntmSalvar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				List<String> lista = criarLista(false);
-				
-				ControladorMediatorImpl.getInstancia().cadastrarAlocacaoMedicos(lista);
-			}
-		});
-		mnOpcoes.add(mntmSalvar);
-		
-		JMenuItem mntmDeletar = new JMenuItem("Deletar");
-		mntmDeletar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-//				codigo = Integer.parseInt( txtCodigo.getText() );
-//				new Controlador().deletarPaciente(codigo);
-			}
-		});
-		mnOpcoes.add(mntmDeletar);
-		
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JLabel lblClnica = new JLabel("Cl�nica:");
-		lblClnica.setBounds(10, 11, 46, 14);
-		contentPane.add(lblClnica);
-		
-		cbxClinica = new JComboBox<>();
-		cbxClinica.setBounds(66, 8, 120, 20);
-		contentPane.add(cbxClinica);
-		
-		JLabel lblEspecialidade = new JLabel("Especialidade:");
-		lblEspecialidade.setBounds(202, 11, 74, 14);
-		contentPane.add(lblEspecialidade);
-		
-		cbxEspecialidade = new JComboBox<>();
-		cbxEspecialidade.setBounds(286, 8, 120, 20);
-		contentPane.add(cbxEspecialidade);
-		
-		JLabel lblMedico = new JLabel("M�dico:");
-		lblMedico.setBounds(416, 11, 46, 14);
-		contentPane.add(lblMedico);
-		
-		cbxMedico = new JComboBox<>();
-		cbxMedico.setBounds(472, 8, 120, 20);
-		contentPane.add(cbxMedico);
-		
-		JLabel lblHorarioInicio = new JLabel("Hor�rio (In�cio):");
-		lblHorarioInicio.setBounds(10, 51, 83, 14);
-		contentPane.add(lblHorarioInicio);
-		
-		spinHorarioInicio = new JSpinner();
-		spinHorarioInicio.setBounds(98, 48, 93, 20);
-		contentPane.add(spinHorarioInicio);
-		
-		JLabel lblHorarioFim = new JLabel("Hor�rio (Fim):");
-		lblHorarioFim.setBounds(255, 51, 74, 14);
-		contentPane.add(lblHorarioFim);
-		
-		spinHorarioFim = new JSpinner();
-		spinHorarioFim.setBounds(339, 48, 90, 20);
-		contentPane.add(spinHorarioFim);
-		
-		btnVerEscalaMedico = new JButton("Ver escala do m�dico");
-		btnVerEscalaMedico.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnVerEscalaMedico.setBounds(454, 98, 138, 23);
-		contentPane.add(btnVerEscalaMedico);
-	}
-	
-	private List<String> criarLista(boolean alterar) {
-		List<String> lista = new ArrayList<>();
-		
-		lista.add( (String) cbxClinica.getSelectedItem() );
-		lista.add( (String) cbxEspecialidade.getSelectedItem() );
-		lista.add( (String) cbxMedico.getSelectedItem() );
-		lista.add( (String) spinHorarioInicio.getValue() );
-		lista.add( (String) spinHorarioFim.getValue() );
-		
-		return lista;
-	}
-	
-	private void exibirEntidade(AlocacaoMedicos alocacaoMedicos) {
-		if (alocacaoMedicos != null) {
+        a.setCodigoClinica( (Integer) cbxClinica.getSelectedItem() );
+        a.setCodigoEspecialidade( (Integer) cbxEspecialidade.getSelectedItem() );
+        a.setCodigoMedico( (Integer) cbxMedico.getSelectedItem() );
+        a.setHorarioAlocacao( (LocalTime) spinHorarioInicio.getValue() );
+        a.setHorarioAlocacao( (LocalTime) spinHorarioFim.getValue() );
+
+        return a;
+    }
+
+    @Override
+    public void lerDaEntidade(AlocacaoMedicos a) {
+        if (a != null) {
 			
 			
 			
-		} else {
-			cbxClinica.setSelectedIndex(0);
-			cbxEspecialidade.setSelectedIndex(0);
-			cbxMedico.setSelectedIndex(0);
-			spinHorarioInicio.setValue( new Date() );
-			spinHorarioFim.setValue( new Date() );
-		}
-	}
+        } else {
+            cbxClinica.setSelectedIndex(0);
+            cbxEspecialidade.setSelectedIndex(0);
+            cbxMedico.setSelectedIndex(0);
+            spinHorarioInicio.setValue( new Date() );
+            spinHorarioFim.setValue( new Date() );
+        }
+    }
+
+    @Override
+    public Controlador<AlocacaoMedicos> getControlador() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    
 }
