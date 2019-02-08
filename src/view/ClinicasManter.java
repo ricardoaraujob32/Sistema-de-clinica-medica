@@ -5,19 +5,18 @@
  */
 package view;
 
-import controller.Controlador;
 import controller.EstadosComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 import model.Clinica;
+import model.Entidade;
 
 /**
  *
  * @author ricardobalduino
  */
-public class ClinicasManter extends JPanel implements TituloJanela<Clinica> {
+public class ClinicasManter extends AbstractBoundaryManter<Clinica> {
     private JTextField txtCodigo;
     private JTextField txtCidade;
     private JTextField txtBairro;
@@ -114,8 +113,10 @@ public class ClinicasManter extends JPanel implements TituloJanela<Clinica> {
     }
 
     @Override
-    public void lerDaEntidade(Clinica c) {
-        if (c != null) {
+    public void lerDaEntidade(Entidade e) {
+        if (e != null) {
+            Clinica c = (Clinica) e;
+            
             txtCodigo.setText( Integer.toString( c.getCodigo() ) );
             cbxEstado.setSelectedItem( c.getEndereco().getEstado() );
             txtCidade.setText( c.getEndereco().getCidade() );
@@ -134,10 +135,7 @@ public class ClinicasManter extends JPanel implements TituloJanela<Clinica> {
         }
     }
 
-    @Override
-    public Controlador<Clinica> getControlador() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     
     

@@ -5,7 +5,6 @@
  */
 package view;
 
-import controller.Controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalTime;
@@ -13,15 +12,15 @@ import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import model.AlocacaoMedicos;
+import model.Entidade;
 
 /**
  *
  * @author ricardobalduino
  */
-public class AlocacaoMedicosManter extends JPanel implements TituloJanela<AlocacaoMedicos> {
+public class AlocacaoMedicosManter extends AbstractBoundaryManter<AlocacaoMedicos> {
     private JComboBox cbxClinica;
     private JComboBox cbxEspecialidade;
     private JComboBox cbxMedico;
@@ -98,8 +97,9 @@ public class AlocacaoMedicosManter extends JPanel implements TituloJanela<Alocac
     }
 
     @Override
-    public void lerDaEntidade(AlocacaoMedicos a) {
-        if (a != null) {
+    public void lerDaEntidade(Entidade e) {
+        if (e != null) {
+            AlocacaoMedicos a = (AlocacaoMedicos) e;
 			
 			
 			
@@ -112,10 +112,7 @@ public class AlocacaoMedicosManter extends JPanel implements TituloJanela<Alocac
         }
     }
 
-    @Override
-    public Controlador<AlocacaoMedicos> getControlador() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     
     

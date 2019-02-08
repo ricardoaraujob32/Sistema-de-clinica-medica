@@ -12,13 +12,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
+import model.Entidade;
 import model.Especialidade;
 
 /**
  *
  * @author ricardobalduino
  */
-public class EspecialidadesManter extends JPanel implements TituloJanela<Especialidade>{
+public class EspecialidadesManter extends AbstractBoundaryManter<Especialidade> {
     private JTextField txtCodigo;
     private JTextArea txtAreaDescricao;
     
@@ -49,17 +50,6 @@ public class EspecialidadesManter extends JPanel implements TituloJanela<Especia
     public String getTituloJanela() {
         return "Manter especialidades";
     }
-
-    @Override
-    public void lerDaEntidade(Especialidade e) {
-        if (e != null) {
-            txtCodigo.setText( Integer.toString( e.getCodigo() ) );
-            txtAreaDescricao.setText( e.getDescricao() );
-        } else {
-            txtCodigo.setText("");
-            txtAreaDescricao.setText("");
-        }
-    }
     
     @Override
     public Especialidade gravarNaEntidade(boolean usarCodigo) {
@@ -75,9 +65,15 @@ public class EspecialidadesManter extends JPanel implements TituloJanela<Especia
     }
 
     @Override
-    public Controlador<Especialidade> getControlador() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void lerDaEntidade(Entidade e) {
+        if (e != null) {
+            Especialidade esp = (Especialidade) e;
+            
+            txtCodigo.setText( Integer.toString( e.getCodigo() ) );
+            txtAreaDescricao.setText( esp.getDescricao() );
+        } else {
+            txtCodigo.setText("");
+            txtAreaDescricao.setText("");
+        }
     }
-
-    
 }

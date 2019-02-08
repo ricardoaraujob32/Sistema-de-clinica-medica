@@ -5,7 +5,6 @@
  */
 package view;
 
-import controller.Controlador;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Calendar;
@@ -13,19 +12,19 @@ import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import model.Consulta;
+import model.Entidade;
 
 /**
  *
  * @author ricardobalduino
  */
-public class ConsultasManter extends JPanel implements TituloJanela<Consulta> {
+public class ConsultasManter extends AbstractBoundaryManter<Consulta> {
     private JTextField txtCodigo;
     private JComboBox<String> cbxClinica;
     private JComboBox<String> cbxPaciente;
@@ -183,17 +182,14 @@ public class ConsultasManter extends JPanel implements TituloJanela<Consulta> {
 
         return c;
     }
+ 
 
     @Override
-    public void lerDaEntidade(Consulta c) {
-        txtCodigo.setText( Integer.toString( c.getCodigo() ) );
+    public void lerDaEntidade(Entidade e) {
+        if (e != null){
+            Consulta c = (Consulta) e; 
+            
+            txtCodigo.setText( Integer.toString( c.getCodigo() ) );
+        }
     }
-
-    @Override
-    public Controlador<Consulta> getControlador() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
-    
 }

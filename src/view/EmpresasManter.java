@@ -5,18 +5,17 @@
  */
 package view;
 
-import controller.Controlador;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 import model.Empresa;
+import model.Entidade;
 
 /**
  *
  * @author ricardobalduino
  */
-public class EmpresasManter extends JPanel implements TituloJanela<Empresa> {
+public class EmpresasManter extends AbstractBoundaryManter<Empresa> {
     private JTextField txtCodigo;
     private JTextField txtNomeFantasia;
     private JTextField txtCnpj;
@@ -124,8 +123,10 @@ public class EmpresasManter extends JPanel implements TituloJanela<Empresa> {
     }
 
     @Override
-    public void lerDaEntidade(Empresa e) {
-        if (e != null) {
+    public void lerDaEntidade(Entidade entidade) {
+        if (entidade != null) {
+            Empresa e = (Empresa) entidade;
+            
             txtCodigo.setText( Integer.toString( e.getCodigo() ) );
             txtNomeFantasia.setText( e.getNome() );
             txtRazaoSocial.setText( e.getRazaoSocial() );
@@ -143,10 +144,5 @@ public class EmpresasManter extends JPanel implements TituloJanela<Empresa> {
             txtContato.setText("");
             txtSite.setText("");
         }
-    }
-
-    @Override
-    public Controlador<Empresa> getControlador() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

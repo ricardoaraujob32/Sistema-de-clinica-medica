@@ -5,27 +5,25 @@
  */
 package view;
 
-import controller.Controlador;
 import controller.EstadosComboBoxModel;
+import controller.MedicosController;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
+import model.Entidade;
 import model.Medico;
 
 /**
  *
  * @author ricardobalduino
  */
-public class MedicosManter extends JPanel implements TituloJanela<Medico> {
+public class MedicosManter extends AbstractBoundaryManter<Medico> {
     private JTextField txtNome;
     private JTextField txtCodigo;
     private JTextField txtRg;
@@ -44,6 +42,8 @@ public class MedicosManter extends JPanel implements TituloJanela<Medico> {
     private JComboBox<String> cbxEstado;
     
     public MedicosManter() {
+        controlador = new MedicosController();
+        
         JLabel lblNome = new JLabel("Nome:");
         lblNome.setBounds(10, 23, 46, 14);
         add(lblNome);
@@ -224,8 +224,10 @@ public class MedicosManter extends JPanel implements TituloJanela<Medico> {
     }
 
     @Override
-    public void lerDaEntidade(Medico m) {
-        if (m != null) {
+    public void lerDaEntidade(Entidade e) {
+        if (e != null) {
+            Medico m = (Medico) e;
+            
             txtNome.setText( m.getNome() );
             txtCodigo.setText( Integer.toString( m.getCodigo() ) );
             spinDataNascimento.setValue( new Date( m.getDataNascimento().toEpochDay() ) );
@@ -260,13 +262,5 @@ public class MedicosManter extends JPanel implements TituloJanela<Medico> {
             txtCrm.setText("");
             txtEmail.setText("");
         }
-    }
-
-    @Override
-    public Controlador<Medico> getControlador() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
-    
+    }   
 }

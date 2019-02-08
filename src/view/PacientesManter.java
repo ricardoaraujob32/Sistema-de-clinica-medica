@@ -5,25 +5,25 @@
  */
 package view;
 
-import controller.Controlador;
 import controller.EstadosComboBoxModel;
+import controller.PacientesController;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
+import model.Entidade;
 import model.Paciente;
 
 /**
  *
  * @author ricardobalduino
  */
-public class PacientesManter extends JPanel implements TituloJanela<Paciente> {
+public class PacientesManter extends AbstractBoundaryManter<Paciente> {
     private JTextField txtNome;
     private JTextField txtCodigo;
     private JSpinner spinDataNascimento;
@@ -42,6 +42,8 @@ public class PacientesManter extends JPanel implements TituloJanela<Paciente> {
     private JTextField txtEmail;
     
     public PacientesManter() {
+        controlador = new PacientesController();
+        
         JLabel lblNome = new JLabel("Nome:");
         lblNome.setBounds(10, 23, 46, 14);
         add(lblNome);
@@ -208,8 +210,10 @@ public class PacientesManter extends JPanel implements TituloJanela<Paciente> {
     }
 
     @Override
-    public void lerDaEntidade(Paciente p) {
-        if (p != null) {
+    public void lerDaEntidade(Entidade e) {
+        if (e != null) {
+            Paciente p = (Paciente) e;
+            
             txtNome.setText( p.getNome() );
             txtCodigo.setText( Integer.toString( p.getCodigo() ) );
             spinDataNascimento.setValue( new Date( p.getDataNascimento().toEpochDay() ) );			
@@ -243,10 +247,5 @@ public class PacientesManter extends JPanel implements TituloJanela<Paciente> {
             txtCelular.setText("");
             txtEmail.setText("");
         }
-    }
-
-    @Override
-    public Controlador<Paciente> getControlador() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }    
+    }     
 }

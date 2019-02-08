@@ -6,15 +6,12 @@
 package view;
 
 import controller.Controlador;
-import controller.ControladorMediatorImpl;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
-import java.util.ListIterator;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,7 +22,6 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import model.Medico;
 
 /**
  *
@@ -50,7 +46,7 @@ public class FrmManter extends JFrame implements ChangeListener, ActionListener 
     private JRadioButtonMenuItem mntmPacientes;
     private JPanel painelAtual;
     private Controlador controlador;
-    private TituloJanela tituloJanela;
+    private Cadastrador cadastrador;
 
     public FrmManter() throws HeadlessException {
         JMenuBar menuBar = new JMenuBar();
@@ -105,32 +101,15 @@ public class FrmManter extends JFrame implements ChangeListener, ActionListener 
         menuBar.add(mnOpcoes);
 
         mntmAlterar = new JMenuItem("Alterar");
-        mntmAlterar.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent arg0) {
-                        List<String> lista = criarLista(true);
-
-                        ControladorMediatorImpl.getInstancia().alterarMedico(lista);
-                }
-        });
+        mntmAlterar.addActionListener(this);
         mnOpcoes.add(mntmAlterar);
 
         mntmSalvar = new JMenuItem("Salvar");
-        mntmSalvar.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent arg0) {
-                        List<String> lista = criarLista(false);
-
-                        ControladorMediatorImpl.getInstancia().cadastrarMedico(lista);
-                }
-        });
+        mntmSalvar.addActionListener(this);
         mnOpcoes.add(mntmSalvar);
 
         mntmDeletar = new JMenuItem("Deletar");
-        mntmDeletar.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent arg0) {
-                        int codigo = Integer.parseInt( txtCodigo.getText() );
-                        ControladorMediatorImpl.getInstancia().deletarMedico(codigo);
-                }
-        });
+        mntmDeletar.addActionListener(this);
         mnOpcoes.add(mntmDeletar);
         
         Container container = getContentPane();
@@ -140,59 +119,23 @@ public class FrmManter extends JFrame implements ChangeListener, ActionListener 
         JPanel pnlBotoes = new JPanel( new FlowLayout(FlowLayout.CENTER) );
         
         btnNovo = new JButton("Novo");
-        btnNovo.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent arg0) {
-                        exibirEntidade(null);
-                }
-        });
+        btnNovo.addActionListener(this);
         pnlBotoes.add(btnNovo);
 
         btnPrimeiro = new JButton("Primeiro");
-        btnPrimeiro.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent arg0) {
-                        Medico primeiro = listaMedicos.peekFirst();
-
-                        exibirEntidade(primeiro);
-                }
-        });
+        btnPrimeiro.addActionListener(this);
         pnlBotoes.add(btnPrimeiro);
 
         btnAnterior = new JButton("Anterior");
-        btnAnterior.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent arg0) {
-                        ListIterator<Medico> iterator = listaMedicos.listIterator();
-                        Medico anterior;
-
-                        if ( iterator.hasPrevious() ) {
-                                anterior = iterator.previous();
-                                exibirEntidade(anterior);
-                        }
-                }
-        });
+        btnAnterior.addActionListener(this);
         pnlBotoes.add(btnAnterior);
 
         btnProximo = new JButton("Próximo");
-        btnProximo.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent arg0) {
-                        ListIterator<Medico> iterator = listaMedicos.listIterator();
-                        Medico proximo;
-
-                        if ( iterator.hasNext() ) {
-                                proximo = iterator.next();
-                                exibirEntidade(proximo);
-                        }
-                }
-        });
+        btnProximo.addActionListener(this);
         pnlBotoes.add(btnProximo);
 
         btnUltimo = new JButton("Último");
-        btnUltimo.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent arg0) {
-                        Medico ultimo = listaMedicos.peekLast();
-
-                        exibirEntidade(ultimo);
-                }
-        });
+        btnUltimo.addActionListener(this);
         pnlBotoes.add(btnUltimo);
         
         container.add(painelAtual, BorderLayout.CENTER);
@@ -234,12 +177,29 @@ public class FrmManter extends JFrame implements ChangeListener, ActionListener 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+        Object source = e.getSource();
+        if (source == btnNovo){
+            cadastrador.limpar();
+        } else if (source == btnPrimeiro){
+            cadastrador.primeiro();
+        } else if (source == btnAnterior){
+            cadastrador.anterior();
+        } else if (source == btnProximo){
+            cadastrador.proximo();
+        } else if (source == btnUltimo){
+            cadastrador.ultimo();
+        } else if (source == mntmAlterar){
+            cadastrador.alterar();
+        } else if (source == mntmSalvar){
+            cadastrador.cadastrar();
+        } else if (source == mntmDeletar){
+            cadastrador.deletar();
+        }
     }
     
-    private void configurarJanela(TituloJanela tj){
-        tituloJanela = tj;
-        setTitle( tituloJanela.getTituloJanela() );
-        controlador = tituloJanela.getControlador();
+    private void configurarJanela(Cadastrador tj){
+        cadastrador = tj;
+        setTitle( cadastrador.getTituloJanela() );
+        controlador = cadastrador.getControlador();
     }
 }

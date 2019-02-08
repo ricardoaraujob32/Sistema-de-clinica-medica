@@ -5,19 +5,16 @@
  */
 package view;
 
-import controller.Controlador;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 import model.Convenio;
+import model.Entidade;
 
 /**
  *
  * @author ricardobalduino
  */
-public class ConveniosManter extends JPanel implements TituloJanela<Convenio> {
+public class ConveniosManter extends AbstractBoundaryManter<Convenio> {
     private JTextField txtCodigo;
     private JTextField txtNomeFantasia;
     private JTextField txtCnpj;
@@ -115,8 +112,10 @@ public class ConveniosManter extends JPanel implements TituloJanela<Convenio> {
     }
 
     @Override
-    public void lerDaEntidade(Convenio c) {
-        if (c != null) {
+    public void lerDaEntidade(Entidade e) {
+        if (e != null) {
+            Convenio c = (Convenio) e;
+            
             txtCodigo.setText( Integer.toString( c.getCodigo() ) );
             txtNomeFantasia.setText( c.getNome() );
             txtRazaoSocial.setText( c.getRazaoSocial() );
@@ -133,13 +132,5 @@ public class ConveniosManter extends JPanel implements TituloJanela<Convenio> {
             txtContato.setText("");
             txtSite.setText("");
         }
-    }
-
-    @Override
-    public Controlador<Convenio> getControlador() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
-    
+    }    
 }
