@@ -77,8 +77,8 @@ public class MedicosManter extends AbstractBoundaryManter<Medico> {
         lblSexo.setBounds(242, 58, 40, 14);
         add(lblSexo);
 
-        cbxSexo = new JComboBox<String>();
-        cbxSexo.setModel( new DefaultComboBoxModel<String>( new String[] {"Masculino", "Feminino", "Outro"} ) );
+        cbxSexo = new JComboBox<>();
+        cbxSexo.setModel( new DefaultComboBoxModel<>( new String[] {"Masculino", "Feminino", "Outro"} ) );
         cbxSexo.setBounds(280, 55, 86, 20);
         add(cbxSexo);
 
@@ -104,7 +104,7 @@ public class MedicosManter extends AbstractBoundaryManter<Medico> {
         lblEstado.setBounds(478, 93, 46, 14);
         add(lblEstado);
 
-        cbxEstado = new JComboBox<String>();
+        cbxEstado = new JComboBox<>();
         cbxEstado.setModel( new EstadosComboBoxModel() );
         cbxEstado.setBounds(534, 90, 52, 20);
         add(cbxEstado);

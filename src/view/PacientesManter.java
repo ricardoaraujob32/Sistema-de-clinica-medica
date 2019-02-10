@@ -75,8 +75,8 @@ public class PacientesManter extends AbstractBoundaryManter<Paciente> {
         lblSexo.setBounds(242, 58, 40, 14);
         add(lblSexo);
 
-        cbxSexo = new JComboBox<String>();
-        cbxSexo.setModel( new DefaultComboBoxModel<String>( new String[] {"Masculino", "Feminino", "Outro"} ) );
+        cbxSexo = new JComboBox<>();
+        cbxSexo.setModel( new DefaultComboBoxModel<>( new String[] {"Masculino", "Feminino", "Outro"} ) );
         cbxSexo.setBounds(280, 55, 86, 20);
         add(cbxSexo);
 
@@ -100,7 +100,7 @@ public class PacientesManter extends AbstractBoundaryManter<Paciente> {
         lblEstado.setBounds(478, 93, 46, 14);
         add(lblEstado);
 
-        cbxEstado = new JComboBox<String>();
+        cbxEstado = new JComboBox<>();
         cbxEstado.setModel( new EstadosComboBoxModel() );
         cbxEstado.setBounds(534, 90, 52, 20);
         add(cbxEstado);
@@ -173,7 +173,7 @@ public class PacientesManter extends AbstractBoundaryManter<Paciente> {
         lblEmpresa.setBounds(394, 58, 46, 14);
         add(lblEmpresa);
 
-        cbxEmpresa = new JComboBox<String>();
+        cbxEmpresa = new JComboBox<>();
         cbxEmpresa.setBounds(444, 55, 142, 20);
         add(cbxEmpresa);
     }    

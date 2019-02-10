@@ -8,6 +8,7 @@ package view;
 import controller.Controlador;
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
@@ -138,6 +139,7 @@ public class FrmManter extends JFrame implements ChangeListener, ActionListener 
         btnUltimo.addActionListener(this);
         pnlBotoes.add(btnUltimo);
         
+        painelAtual = new AlocacaoMedicosManter();
         container.add(painelAtual, BorderLayout.CENTER);
         container.add(pnlBotoes, BorderLayout.SOUTH);
         
@@ -147,7 +149,11 @@ public class FrmManter extends JFrame implements ChangeListener, ActionListener 
     }   
     
     public static void main(String[] args) {
-        new FrmManter();
+        try{
+            EventQueue.invokeLater( () -> new FrmManter() );
+        } catch (Exception e){
+            
+        }
     }
 
     @Override
@@ -155,15 +161,15 @@ public class FrmManter extends JFrame implements ChangeListener, ActionListener 
         JRadioButtonMenuItem source = (JRadioButtonMenuItem) e.getSource();
         
         if (source == mntmAlocacao){
-            
+            painelAtual = new AlocacaoMedicosManter();
         } else if (source == mntmClinicas){
-            
+            painelAtual = new ClinicasManter();
         } else if (source == mntmConsultas){
-            
+            painelAtual = new ConsultasManter();
         } else if (source == mntmConvenios){
-            
+            painelAtual = new ConveniosManter();
         } else if (source == mntmEmpresas){
-            
+            painelAtual = new EmpresasManter();
         } else if (source == mntmEspecialidades){
             painelAtual = new EspecialidadesManter();
         } else if (source == mntmMedicos){
@@ -197,8 +203,8 @@ public class FrmManter extends JFrame implements ChangeListener, ActionListener 
         }
     }
     
-    private void configurarJanela(Cadastrador tj){
-        cadastrador = tj;
+    private void configurarJanela(Cadastrador c){
+        cadastrador = c;
         setTitle( cadastrador.getTituloJanela() );
         controlador = cadastrador.getControlador();
     }

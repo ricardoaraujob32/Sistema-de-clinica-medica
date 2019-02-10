@@ -93,7 +93,7 @@ public class EmpresasManter extends AbstractBoundaryManter<Empresa> {
         txtSite.setBounds(349, 280, 99, 20);
         add(txtSite);
 
-        cbxConvenio = new JComboBox<String>();
+        cbxConvenio = new JComboBox<>();
         cbxConvenio.setEditable(true);
         cbxConvenio.setBounds(344, 72, 104, 20);
         add(cbxConvenio);

@@ -51,7 +51,7 @@ public class ConsultasManter extends AbstractBoundaryManter<Consulta> {
         lblClinicas.setBounds(10, 71, 46, 14);
         add(lblClinicas);
 
-        cbxClinica = new JComboBox<String>();
+        cbxClinica = new JComboBox<>();
         cbxClinica.setBounds(66, 68, 168, 20);
         add(cbxClinica);
 
@@ -59,7 +59,7 @@ public class ConsultasManter extends AbstractBoundaryManter<Consulta> {
         lblPaciente.setBounds(244, 71, 46, 14);
         add(lblPaciente);
 
-        cbxPaciente = new JComboBox<String>();
+        cbxPaciente = new JComboBox<>();
         cbxPaciente.setBounds(300, 68, 168, 20);
         add(cbxPaciente);
 
@@ -67,7 +67,7 @@ public class ConsultasManter extends AbstractBoundaryManter<Consulta> {
         lblMedico.setBounds(478, 71, 38, 14);
         add(lblMedico);
 
-        cbxMedico = new JComboBox<String>();
+        cbxMedico = new JComboBox<>();
         cbxMedico.setBounds(526, 68, 168, 20);
         add(cbxMedico);
 
@@ -75,7 +75,7 @@ public class ConsultasManter extends AbstractBoundaryManter<Consulta> {
         lblEspecialidade.setBounds(704, 71, 74, 14);
         add(lblEspecialidade);
 
-        cbxEspecialidade = new JComboBox<String>();
+        cbxEspecialidade = new JComboBox<>();
         cbxEspecialidade.setBounds(788, 68, 168, 20);
         add(cbxEspecialidade);
 
@@ -105,8 +105,8 @@ public class ConsultasManter extends AbstractBoundaryManter<Consulta> {
         lblDuracao.setBounds(478, 110, 46, 14);
         add(lblDuracao);
 
-        cbxDuracao = new JComboBox<String>();
-        cbxDuracao.setModel(new DefaultComboBoxModel<String>(new String[] {"00:15", "00:30", "00:45", "01:00"}));
+        cbxDuracao = new JComboBox<>();
+        cbxDuracao.setModel(new DefaultComboBoxModel<>(new String[] {"00:15", "00:30", "00:45", "01:00"}));
         cbxDuracao.setBounds(526, 107, 62, 20);
         add(cbxDuracao);
 
@@ -114,7 +114,7 @@ public class ConsultasManter extends AbstractBoundaryManter<Consulta> {
         lblTipo.setBounds(732, 110, 46, 14);
         add(lblTipo);
 
-        cbxTipo = new JComboBox<String>();
+        cbxTipo = new JComboBox<>();
         cbxTipo.setBounds(788, 107, 98, 20);
         add(cbxTipo);
 

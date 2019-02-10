@@ -7,8 +7,13 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.AbstractTableModel;
 
 import dao.DAO;
+import dao.GenericDAOException;
+import dao.GerenciadorConexao;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.Entidade;
 
-public abstract class AbstractControlador<E> extends AbstractTableModel implements Controlador<E> {
+public abstract class AbstractControlador<E extends Entidade> extends AbstractTableModel implements Controlador<E> {
 	
 	/** 
 	 * Os nomes das colunas da tabela Empresas 
@@ -53,7 +58,7 @@ public abstract class AbstractControlador<E> extends AbstractTableModel implemen
 	}
 
 	/** 
-	 * Fornece acesso à lista de empresas
+	 * Fornece acesso ï¿½ lista de empresas
 	 * 
 	 * @return Uma lista representando o conjunto de empresas cadastradas
 	 */
@@ -106,9 +111,13 @@ public abstract class AbstractControlador<E> extends AbstractTableModel implemen
 	 */
 	@Override
 	public void alterar(E entidade) {
-		if (entidade != null) {
-			dao.alterar(entidade);
-		}		
+            if (entidade != null) {
+                try {
+                    dao.alterar(entidade);
+                } catch (GenericDAOException ex) {
+                    Logger.getLogger(AbstractControlador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }		
 	}
 
 	/** 
@@ -116,9 +125,13 @@ public abstract class AbstractControlador<E> extends AbstractTableModel implemen
 	 */
 	@Override
 	public void cadastrar(E entidade) {
-		if (entidade != null) {
-			dao.cadastrar(entidade);
-		}		
+            if (entidade != null) {
+                try {
+                    dao.cadastrar(entidade);
+                } catch (GenericDAOException ex) {
+                    Logger.getLogger(AbstractControlador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }		
 	}
 	
 	/** 
@@ -126,9 +139,13 @@ public abstract class AbstractControlador<E> extends AbstractTableModel implemen
 	 */
 	@Override
 	public void deletar(E entidade) {
-		if (entidade != null) {
-			dao.deletar(entidade);
-		}		
+            if (entidade != null) {
+                try {
+                    dao.deletar(entidade);
+                } catch (GenericDAOException ex) {
+                    Logger.getLogger(AbstractControlador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }		
 	}
 
 	/** 
@@ -136,10 +153,15 @@ public abstract class AbstractControlador<E> extends AbstractTableModel implemen
 	 */
 	@Override
 	public List<E> pesquisar() {
-		listaEntidades = ( LinkedList<E> ) dao.pesquisar();
-		atualizarComboBoxModel();
-		
-		return listaEntidades;
+            try {
+                listaEntidades = ( LinkedList<E> ) dao.pesquisar();
+            } catch (GenericDAOException ex) {
+                Logger.getLogger(AbstractControlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            atualizarComboBoxModel();
+
+            return listaEntidades;
 	}
 
 	/** 
@@ -147,7 +169,11 @@ public abstract class AbstractControlador<E> extends AbstractTableModel implemen
 	 */
 	@Override
 	public void fecharConexao() {
-		dao.fecharConexao();		
+            try {		
+                GerenciadorConexao.getInstance().fecharConexao();
+            } catch (GenericDAOException ex) {
+                Logger.getLogger(AbstractControlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
 	}
 	
 	/** 

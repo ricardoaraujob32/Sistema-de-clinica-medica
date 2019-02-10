@@ -38,7 +38,7 @@ public class ClinicasManter extends AbstractBoundaryManter<Clinica> {
         lblEstado.setBounds(141, 11, 46, 14);
         add(lblEstado);
 
-        cbxEstado = new JComboBox<String>();
+        cbxEstado = new JComboBox<>();
         cbxEstado.setModel( new EstadosComboBoxModel() );
         cbxEstado.setBounds(197, 8, 46, 20);
         add(cbxEstado);

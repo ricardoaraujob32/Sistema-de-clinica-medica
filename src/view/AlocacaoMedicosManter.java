@@ -33,7 +33,7 @@ public class AlocacaoMedicosManter extends AbstractBoundaryManter<AlocacaoMedico
         lblClnica.setBounds(10, 11, 46, 14);
         add(lblClnica);
 
-        cbxClinica = new JComboBox<String>();
+        cbxClinica = new JComboBox<>();
         cbxClinica.setBounds(66, 8, 120, 20);
         add(cbxClinica);
 
@@ -41,7 +41,7 @@ public class AlocacaoMedicosManter extends AbstractBoundaryManter<AlocacaoMedico
         lblEspecialidade.setBounds(202, 11, 74, 14);
         add(lblEspecialidade);
 
-        cbxEspecialidade = new JComboBox<String>();
+        cbxEspecialidade = new JComboBox<>();
         cbxEspecialidade.setBounds(286, 8, 120, 20);
         add(cbxEspecialidade);
 
@@ -49,7 +49,7 @@ public class AlocacaoMedicosManter extends AbstractBoundaryManter<AlocacaoMedico
         lblMedico.setBounds(416, 11, 46, 14);
         add(lblMedico);
 
-        cbxMedico = new JComboBox<String>();
+        cbxMedico = new JComboBox<>();
         cbxMedico.setBounds(472, 8, 120, 20);
         add(cbxMedico);
 
